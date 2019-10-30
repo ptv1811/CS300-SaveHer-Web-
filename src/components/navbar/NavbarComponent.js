@@ -5,18 +5,16 @@ import {
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+    NavItem
+      } from 'reactstrap';
 import {
         BrowserRouter as Router,
         Switch,
         Route,
         Link
       } from "react-router-dom";
+
+import Login from '../login/Login';
 function NavbarComponent(props){
 
     const [isOpen, setIsOpen]=useState(false);
@@ -42,6 +40,9 @@ function NavbarComponent(props){
             <NavItem>
                 <Link className="nav-link" to='/contact'>CONTACT</Link>
             </NavItem>
+            <NavItem>
+                <Link className="nav-link" to='/login'>LOGIN</Link>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
@@ -55,6 +56,9 @@ function NavbarComponent(props){
                 </Route>
                 <Route path='/contact' exact>
                     <h1>CONTACT PAGE</h1>
+                </Route>
+                <Route path='/login' exact>
+                    <Login/>
                 </Route>
 
             </Switch>
