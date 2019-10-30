@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Cookies from 'js-cookie';
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import {
   BrowserRouter as Router,
@@ -6,6 +7,8 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import Home from '../pages/home/Home';
+
 import axios from 'axios';
 import './Login.css';
 function Login (props){
@@ -27,9 +30,11 @@ function Login (props){
         
         axios.post('http://localhost:3001/api/login',submitData)
           .then(res=>{
-                      console.log(res.data.email);
+                      console.log(res.data);
                       setLoginToken(res.data.uid);
                       setUserEmail(res.data.email);
+                      Cookies.set('token',res.data.uid);
+                      props.reRenderNav();
                     })
           .catch(err=>console.log(err));
         setEmail('');
@@ -66,8 +71,8 @@ function Login (props){
         </Form>}
         <Switch>
           <Route path='/' exact>
-              <h1>HOME PAGE</h1>
-              <h2>{`HELLO ${userEmail}`}</h2>
+ 
+             <Home userEmail={userEmail}/>
           </Route>
         </Switch>
       </Router>

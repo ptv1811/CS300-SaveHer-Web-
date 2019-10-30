@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Cookies from 'js-cookie';
 import {
     Collapse,
     Navbar,
@@ -18,11 +19,13 @@ import Login from '../login/Login';
 function NavbarComponent(props){
 
     const [isOpen, setIsOpen]=useState(false);
-
+    const [reRender, setReRender]=useState(false);
     const toggle = ()=>{
         setIsOpen(!isOpen);
     }
-
+    function forceReRender(){
+        setReRender(true);
+    }
     return ( 
       <Router>
         <div className="navbar-container">
@@ -40,9 +43,9 @@ function NavbarComponent(props){
             <NavItem>
                 <Link className="nav-link" to='/contact'>CONTACT</Link>
             </NavItem>
-            <NavItem>
+           {Cookies.get('token')===undefined && <NavItem>
                 <Link className="nav-link" to='/login'>LOGIN</Link>
-            </NavItem>
+            </NavItem>}
           </Nav>
         </Collapse>
       </Navbar>
@@ -58,7 +61,7 @@ function NavbarComponent(props){
                     <h1>CONTACT PAGE</h1>
                 </Route>
                 <Route path='/login' exact>
-                    <Login/>
+                    <Login reRenderNav={forceReRender}/>
                 </Route>
 
             </Switch>
