@@ -14,8 +14,8 @@ import {
         Route,
         Link
       } from "react-router-dom";
-
 import Login from '../login/Login';
+
 function NavbarComponent(props){
 
     const [isOpen, setIsOpen]=useState(false);
@@ -50,21 +50,24 @@ function NavbarComponent(props){
         </Collapse>
       </Navbar>
       </div>
-            <Switch>
-                <Route path='/' exact>
-                    <h1>HOME PAGE</h1>
-                </Route>
-                <Route path='/about' exact>
-                    <h1>ABOUT PAGE</h1>
-                </Route>
-                <Route path='/contact' exact>
-                    <h1>CONTACT PAGE</h1>
-                </Route>
-                <Route path='/login' exact>
-                    <Login reRenderNav={forceReRender}/>
-                </Route>
 
-            </Switch>
+                <Switch>
+                
+                    <Route path='/' exact>
+                        <h1>HOME PAGE</h1>
+                    </Route>
+                    <Route path='/about' exact>
+                        <h1>ABOUT PAGE</h1>
+                    </Route>
+                    <Route path='/contact' exact>
+                        <h1>CONTACT PAGE</h1>
+                    </Route>
+                    <Route path='/login' exact>
+                        <Login reRenderNav={forceReRender}/>
+                    </Route>
+                
+                </Switch>
+ 
      </Router>
     );
 }
