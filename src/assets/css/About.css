@@ -1,0 +1,95 @@
+* {
+    font-family: "Courier New", Courier, monospace
+}
+
+#about {
+    height: 100%;
+}
+
+#about-us {
+    display: block;
+    height: 30%;
+    width: 100%;
+    padding: 20px;
+}
+
+#about-us-title {
+    text-align: center;
+    text-shadow: 1px 1px #808080;
+    background-color: rgb(200, 200, 200, 0.3);
+}
+
+#about-us-content {
+    text-align: center;
+    padding: 10px;
+}
+
+#member {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+#member-info {
+    width: 25%;
+    height: auto;
+    display: flex;
+    position: relative;
+    margin: 20px;
+}
+
+#member-info img {
+    width: 80%;
+    height: auto;
+    background-size: cover;
+}
+
+#member-info-detail {
+    opacity: 0;
+    position: absolute;
+    width: 80%;
+    height: 0;
+    padding: 12px;
+    text-align: center;
+    transition: all 0.5s ease;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 1vw;
+}
+
+#member-info:hover #member-info-detail {
+    opacity: 1;
+    height: 50%;
+    font: robotic;
+    background-color: rgb(200, 200, 200, 0.8);
+}
+
+#break{
+    width: 100%;
+    height: 0;
+}
+
+@media only screen and (max-device-width: 765px) {
+    #member-info {
+        width: 100%;
+        margin-left: 20%;
+    }
+
+    #member-info img {
+        height: 100%;
+    }
+
+    #member-info-detail {
+        font-size: 3vw;
+    }
+}
+
+
+
+
+
