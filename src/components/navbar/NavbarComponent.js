@@ -15,8 +15,10 @@ import {
         BrowserRouter as Router,
         Switch,
         Route,
-        Link
-      } from "react-router-dom";
+        Link } from "react-router-dom";
+import About from '../../containers/About';
+import Contact from '../../containers/Contact'
+
 function NavbarComponent(props){
 
     const [isOpen, setIsOpen]=useState(false);
@@ -29,7 +31,7 @@ function NavbarComponent(props){
       <Router>
         <div className="navbar-container">
         <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand href="/">Save Her</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
@@ -51,10 +53,10 @@ function NavbarComponent(props){
                     <h1>HOME PAGE</h1>
                 </Route>
                 <Route path='/about' exact>
-                    <h1>ABOUT PAGE</h1>
+                    <About/>
                 </Route>
                 <Route path='/contact' exact>
-                    <h1>CONTACT PAGE</h1>
+                    <Contact/>
                 </Route>
 
             </Switch>

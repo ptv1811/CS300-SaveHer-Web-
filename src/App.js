@@ -1,6 +1,7 @@
 import React from 'react';
+import About from './containers/About';
 import NavbarComponent from './components/navbar/NavbarComponent';
-import './App.css';
+import './assets/css/App.css';
 
 function App() {
   return (

@@ -1,0 +1,38 @@
+#contact {
+    background-image: url(../img/Earth.jpg);
+    overflow: visible;
+    padding-top:100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgb(200, 200, 200, 0.7);
+    height: 800px;
+}
+
+#title {
+    text-align: center;
+    overflow: visible;
+    background-color: rgb(200, 200, 200);
+    opacity: 0.8;
+}
+
+#contact-detail {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    background-color: rgb(200, 200, 200);
+    opacity: 0.8;
+}
+
+#contact-column img {
+    width: 10%;
+    height: auto;
+    align-items: center;
+}
+
+#contact-column {
+    width: 25%;
+    height: auto;
+    text-align: center;
+    font-size: 18px;
+}
