@@ -7,11 +7,15 @@
 }
 
 .btn.btn-secondary{
-    margin: 0 45% ;
+    margin: 0 25% ;
+}
+.btn.login-fb>.fb-icon{
+    margin-right: 4px;
 }
 .btn.login-fb{
     background-color:#3b5998;
     width: 200px;
+    margin-top: 5px;
 }
 
 .alert.alert-danger{

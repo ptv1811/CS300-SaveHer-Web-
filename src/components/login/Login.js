@@ -8,6 +8,9 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook } from "@fortawesome/free-brands-svg-icons"
+
 import Home from '../pages/home/Home';
 import app from '../../Firebase';
 import {AuthContext, AuthProvider }from '../config/Auth';
@@ -108,10 +111,9 @@ function Login (props){
               </FormGroup>
           
               <Button>Log In</Button>
-              
-          {errCode!==''&& <div>{<Alert color="danger">Failed to login</Alert>}</div>}
         </Form>}
-        {loginToken==='' && <Button onClick={loginWithFb}  className="login-fb">Log in with Facebook</Button>} 
+        {loginToken==='' && <Button onClick={loginWithFb} className="login-fb"> <FontAwesomeIcon className="fb-icon" icon={faFacebook} />Log in with Facebook </Button>} 
+        {errCode!==''&& <div>{<Alert color="danger">Failed to login</Alert>}</div>}
         <Switch>
           <Route path='/' exact>
             <AuthContext.Consumer>
