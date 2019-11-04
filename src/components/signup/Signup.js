@@ -3,9 +3,11 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Container} from 'reactstrap';
 import { Alert } from 'reactstrap';
 import app from '../../Firebase';
+import classNames from 'classnames';
 import {
   Redirect
 } from "react-router-dom";
+import './Signup.css';
 function SignUp(props){
   const [email, setEmail]= useState('');
   const [password, setPassword] =  useState('');
@@ -63,7 +65,7 @@ function SignUp(props){
             <Input onChange={(e)=>onChangeDisplayName(e)} type="text" name="displayName" id="displayName" placeholder="your display name" value={displayName} />
           </FormGroup>
           <Button>Submit</Button>
-            {errCode!==''&& <Alert color="danger">Sign Up Failed</Alert>}
+            <Alert className={classNames({'alert-disappear':errCode===''},{'alert-appear':errCode!==''})}  color="danger">Sign Up Failed</Alert>
         </Form>
       </Container>}
       </div>
