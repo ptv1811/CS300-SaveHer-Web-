@@ -17,7 +17,8 @@ import {
 import Login from '../login/Login';
 import {AuthContext, AuthProvider} from '../config/Auth';
 import Home from '../pages/home/Home';
-import Logout from '../logout/Logout'
+import Logout from '../logout/Logout';
+import SignUp from '../signup/Signup';
 
 function NavbarComponent(props){
     const navRef= React.createRef();
@@ -61,18 +62,29 @@ function NavbarComponent(props){
                     <Link  onClick={toggle} className="nav-link" to='/contact'>CONTACT</Link>
                 </NavItem>
                 <AuthContext.Consumer>
-                   
                         {({currentUser})=>{
                           
                            if (currentUser===null)
                             {
-                                return (<NavItem><Link onClick={toggle} className="nav-link" to='/login'>LOGIN</Link></NavItem>);
+                                return (    <NavItem>
+                                                <Link onClick={toggle} className="nav-link" to='/login'>LOGIN</Link>
+                                            </NavItem>  
+                                        );
                             }
                             else {
                                 return (<NavItem><Link onClick={toggle} className="nav-link" to='/logout'>LOGOUT</Link></NavItem>);
                             }
                          }} 
-                    
+                </AuthContext.Consumer>
+                <AuthContext.Consumer>
+                        {({currentUser})=>{
+                            if (currentUser===null){
+                                return (
+                                    <NavItem>
+                                        <Link onClick={toggle} className="nav-link" to='/signup'>SIGNUP</Link>
+                                    </NavItem>);
+                            }
+                        }}
                 </AuthContext.Consumer>
             </Nav>
             </Collapse>
@@ -91,12 +103,15 @@ function NavbarComponent(props){
                             <h1>CONTACT PAGE</h1>
                         </Route>
                         <Route path='/login' exact>
-                            <Login reRenderNav={forceReRender}/>
+                            <Login />
                         </Route>
                         <Route path='/logout' exact>
                            <AuthContext.Consumer>
                                 {({currentUser, setCurrentUserNull})=><Logout setCurrentUserNull={setCurrentUserNull} user={currentUser} reRenderNav={forceReRender}/>} 
                            </AuthContext.Consumer>
+                        </Route>
+                        <Route path='/signup' exact>
+                            <SignUp/>
                         </Route>
                     </Switch>
     

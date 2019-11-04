@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import firebase from 'firebase';
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import { Alert } from 'reactstrap';
@@ -12,12 +12,26 @@ import Home from '../pages/home/Home';
 import app from '../../Firebase';
 import {AuthContext, AuthProvider }from '../config/Auth';
 import './Login.css';
+
+let isMounted = false;
+
+
 function Login (props){
+  console.log(isMounted);
     const [email, setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [loginToken, setLoginToken] = useState('');
     const [errCode, setErrCode]= useState('');
+    const abortController = new AbortController();
 
+    useEffect(()=>{
+      isMounted=true;
+      return function cleanup() {     
+         abortController.abort();
+        isMounted=false;  
+      }; 
+    },[])
+    
     if (errCode!==''){
      const id = setTimeout(()=>{
           setErrCode('');
@@ -26,23 +40,22 @@ function Login (props){
     }
 
     function loginWithFb(){
-      const provider = new firebase.auth.FacebookAuthProvider();
-      firebase.auth().signInWithPopup(provider)
-      .then (res => {
-        setLoginToken(res.user.uid);
-        props.reRenderNav();
-      })
-      .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-        console.log({errorCode,errorMessage,email,credential})
-      });
+          const provider = new firebase.auth.FacebookAuthProvider();
+          firebase.auth().signInWithPopup(provider)
+            .then (res => {
+              if (isMounted===true)  setLoginToken(res.user.uid)
+            })
+            .catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              // The email of the user's account used.
+              var email = error.email;
+              // The firebase.auth.AuthCredential type that was used.
+              var credential = error.credential;
+              // ...
+              console.log({errorCode,errorMessage,email,credential})
+            });
     }
 
     function onChangeEmail(event){
@@ -59,7 +72,7 @@ function Login (props){
           app.auth().signInWithEmailAndPassword(email,password)
             .then(res=>{
               setLoginToken(res.user.uid);
-              props.reRenderNav();
+              console.log(res.user);
             })
             .catch(err=>{
               setErrCode(err.message);
