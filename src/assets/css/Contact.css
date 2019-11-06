@@ -1,12 +1,13 @@
 #contact {
     background-image: url(../img/Earth.jpg);
     overflow: visible;
-    padding-top:100px;
+    padding-top: 50px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: rgb(200, 200, 200, 0.7);
-    height: 1500px;
+    height: 100vh;
+    width: 100vw;
 }
 
 #title {
@@ -14,7 +15,7 @@
     overflow: visible;
     background-color: rgb(200, 200, 200);
     opacity: 0.8;
-    font-size: 4vw;
+    font-size: 6vw;
 }
 
 #contact-detail {
@@ -26,7 +27,7 @@
 }
 
 #contact-column img {
-    width: 10%;
+    width: 12%;
     height: auto;
     align-items: center;
 }
@@ -37,22 +38,3 @@
     text-align: center;
     font-size: 2vw;
 }
-
-@media only screen and (max-device-width: 1200px) {
-    #contact-column img {
-        width: 15%;
-    }
-}
-
-@media only screen and (max-device-width: 480px) {
-    #title {
-        font-size: 24px;
-    }
-    #contact-column img {
-        width: 15%;
-    }
-    #contact-column {
-        font-size: 8px;
-    }
-}
-
