@@ -1,0 +1,8 @@
+.alert-disappear{
+    opacity: 0;
+    transition: all 0.5s;
+}
+.alert-appear{
+    opacity: 1;
+    transition: all 0.5s;
+}
