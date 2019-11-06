@@ -35,7 +35,7 @@
 }
 
 #member-info {
-    width: 25%;
+    width: 20%;
     height: auto;
     display: flex;
     position: relative;
@@ -45,7 +45,6 @@
 #member-info img {
     width: 80%;
     height: auto;
-    background-size: cover;
 }
 
 #member-info-detail {
@@ -53,7 +52,7 @@
     position: absolute;
     width: 80%;
     height: 0;
-    padding: 12px;
+    padding: 10px;
     text-align: center;
     transition: all 0.5s ease;
     bottom: 0;
