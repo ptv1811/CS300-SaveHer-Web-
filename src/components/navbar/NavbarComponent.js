@@ -19,6 +19,10 @@ import {AuthContext, AuthProvider} from '../config/Auth';
 import Home from '../pages/home/Home';
 import Logout from '../logout/Logout';
 import SignUp from '../signup/Signup';
+import About from '../../containers/About';
+import Contact from '../../containers/Contact'
+
+function NavbarComponent(props){
 
 function NavbarComponent(props){
     const navRef= React.createRef();
@@ -97,10 +101,10 @@ function NavbarComponent(props){
                           </AuthContext.Consumer>
                         </Route>
                         <Route path='/about' exact>
-                            <h1>ABOUT PAGE</h1>
+                            <About/>
                         </Route>
                         <Route path='/contact' exact>
-                            <h1>CONTACT PAGE</h1>
+                            <Contact/>
                         </Route>
                         <Route path='/login' exact>
                             <Login />
