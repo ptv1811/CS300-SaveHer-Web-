@@ -1,6 +1,5 @@
 import React from 'react';
 import NavbarComponent from './components/navbar/NavbarComponent';
-import './App.css';
 import './assets/css/App.css';
 require('dotenv').config();
 function App() {

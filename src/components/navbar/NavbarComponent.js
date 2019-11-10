@@ -22,7 +22,6 @@ import SignUp from '../signup/Signup';
 import About from '../../containers/About';
 import Contact from '../../containers/Contact'
 
-function NavbarComponent(props){
 
 function NavbarComponent(props){
     const navRef= React.createRef();
