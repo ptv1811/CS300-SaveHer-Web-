@@ -61,7 +61,7 @@ function SignUp(props){
             <Input onChange={(e)=>onChangePassword(e)} type="password" name="password" id="examplePassword" placeholder="password" value={password} />
           </FormGroup>
           <FormGroup>
-            <Label for="displayName">Email</Label>
+            <Label for="displayName">Display Name</Label>
             <Input onChange={(e)=>onChangeDisplayName(e)} type="text" name="displayName" id="displayName" placeholder="your display name" value={displayName} />
           </FormGroup>
           <Button>Submit</Button>
