@@ -20,13 +20,13 @@ let isMounted = false;
 
 
 function Login (props){
-  console.log(isMounted);
+    console.log("HELLO LOGIN PAGE");
     const [email, setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [loginToken, setLoginToken] = useState('');
     const [errCode, setErrCode]= useState('');
     const abortController = new AbortController();
-
+ 
     useEffect(()=>{
       isMounted=true;
       return function cleanup() {     
@@ -46,7 +46,9 @@ function Login (props){
           const provider = new firebase.auth.FacebookAuthProvider();
           firebase.auth().signInWithPopup(provider)
             .then (res => {
-              if (isMounted===true)  setLoginToken(res.user.uid)
+              if (isMounted===true)  {
+                setLoginToken(res.user.uid);
+              }
             })
             .catch(function(error) {
               // Handle Errors here.
@@ -75,8 +77,7 @@ function Login (props){
           app.auth().signInWithEmailAndPassword(email,password)
             .then(res=>{
               setLoginToken(res.user.uid);
-              console.log(res.user);
-            })
+              })
             .catch(err=>{
               setErrCode(err.message);
             });
@@ -85,44 +86,57 @@ function Login (props){
         setPassword('');    
     }
     return (
-     <AuthProvider>
+    <AuthProvider>
       <Router>
-       {loginToken!=='' && <Redirect to='/' exact/>}
-       {loginToken==='' && 
-          <Form onSubmit={(event)=>submitHandling(event)}>
-              <FormGroup >
-                <Label for="exampleEmail">Email</Label>
-                <Input type="email" 
-                      name="email" 
-                      id="exampleEmail"
-                      placeholder="example@email.com"
-                      value={email} 
-                      onChange={(event)=>onChangeEmail(event)}/>
-              </FormGroup>
-
-              <FormGroup>
-                <Label for="examplePassword">Password</Label>
-                <Input type="password" 
-                      name="password" 
-                      id="examplePassword" 
-                      placeholder="password" 
-                      value={password}
-                      onChange={(event)=>onChagnePassword(event)}/>
-              </FormGroup>
+        <AuthContext.Consumer>
+            {({currentUser})=>{
+                if (currentUser !== null) { 
+                    return (<Redirect to='/' exact/>)
+                  }
+                else {
+                    return (
+                      <Form onSubmit={(event)=>submitHandling(event)}>
+                        <FormGroup >
+                          <Label for="exampleEmail">Email</Label>
+                          <Input type="email" 
+                                name="email" 
+                                id="exampleEmail"
+                                placeholder="example@email.com"
+                                value={email} 
+                                onChange={(event)=>onChangeEmail(event)}/>
+                        </FormGroup>
           
-              <Button>Log In</Button>
-        </Form>}
-        {loginToken==='' && <Button onClick={loginWithFb} className="login-fb"> <FontAwesomeIcon className="fb-icon" icon={faFacebook} />Log in with Facebook </Button>} 
+                        <FormGroup>
+                          <Label for="examplePassword">Password</Label>
+                          <Input type="password" 
+                                name="password" 
+                                id="examplePassword" 
+                                placeholder="password" 
+                                value={password}
+                                onChange={(event)=>onChagnePassword(event)}/>
+                        </FormGroup>
+                        <Button>Log In</Button>
+                        <Button onClick={loginWithFb} className="login-fb"> <FontAwesomeIcon className="fb-icon" icon={faFacebook} />Log in with Facebook </Button>
+                      </Form>
+                    );
+                }    
+              }
+            }
+
+              
+        </AuthContext.Consumer>
+      
         {errCode!==''&& <div>{<Alert color="danger">Failed to login</Alert>}</div>}
         <Switch>
           <Route path='/' exact>
             <AuthContext.Consumer>
-              {({currentUser})=><Home user={currentUser}/>} 
+              {({currentUser})=>  <Home user={currentUser}/>}
             </AuthContext.Consumer>
           </Route>
         </Switch>
       </Router>
-      </AuthProvider>
+    </AuthProvider>
+
     );
 }
 

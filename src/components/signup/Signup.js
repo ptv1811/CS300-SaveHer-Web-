@@ -25,6 +25,7 @@ function SignUp(props){
           displayName: displayName
         }).then(res=>{
           setSignUpSuccess(true);
+      
         })
       )
       .catch(err=>{

@@ -40,10 +40,6 @@ function NavbarComponent(props){
       }
 
     }
-    function forceReRender(x){
-
-        setReRender(!reRender);
-    }
 
        
     return ( 
@@ -110,11 +106,11 @@ function NavbarComponent(props){
                         </Route>
                         <Route path='/logout' exact>
                            <AuthContext.Consumer>
-                                {({currentUser, setCurrentUserNull})=><Logout setCurrentUserNull={setCurrentUserNull} user={currentUser} reRenderNav={forceReRender}/>} 
+                                {({currentUser, setCurrentUserNull})=><Logout setCurrentUserNull={setCurrentUserNull} user={currentUser}/>} 
                            </AuthContext.Consumer>
                         </Route>
                         <Route path='/signup' exact>
-                            <SignUp/>
+                            <SignUp />
                         </Route>
                     </Switch>
     
