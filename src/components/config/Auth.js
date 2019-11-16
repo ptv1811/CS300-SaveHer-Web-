@@ -16,10 +16,7 @@ export const AuthProvider = (props) => {
             return function cleanup(){
                 abortController.abort();
             }
-    },[]);
-
-     
-    
+    },[]);  
 
     function setCurrentUserNull(){
         setCurrentUser(null)

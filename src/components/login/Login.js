@@ -20,7 +20,6 @@ let isMounted = false;
 
 
 function Login (props){
-    console.log("HELLO LOGIN PAGE");
     const [email, setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [loginToken, setLoginToken] = useState('');

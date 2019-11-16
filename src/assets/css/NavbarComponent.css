@@ -1,3 +1,14 @@
 * {
     font-family: "Courier New", Courier, monospace
 }
+
+.navbar{ 
+    position: relative;
+}
+
+.top-nav{
+    top:0 !important;
+}
+.middle-nav{
+    top:100% !important;
+}
