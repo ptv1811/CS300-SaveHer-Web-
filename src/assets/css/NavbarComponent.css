@@ -1,11 +1,13 @@
 * {
     font-family: "Courier New", Courier, monospace
 }
-
 .navbar{ 
     position: relative;
 }
 
+.navbar-light .navbar-nav .nav-item .nav-link{
+    color: rgba(0, 0, 0, 1);
+}
 .top-nav{
     top:0 !important;
 }

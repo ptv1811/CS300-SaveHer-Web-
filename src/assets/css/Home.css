@@ -36,9 +36,6 @@ html, body, #root, .App{
     z-index: 1;
     position: relative;
 }
-.navbar-container > .bg-light{
-    background-color: #aaa !important;
-}
 
 .top-nav{
     top:0 !important;

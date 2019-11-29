@@ -8,6 +8,8 @@
 
 .btn.btn-secondary{
     margin: 0 25% ;
+    font-size: 13px;
+    width: 200px;
 }
 .btn.login-fb>.fb-icon{
     margin-right: 4px;
@@ -16,6 +18,7 @@
     background-color:#3b5998;
     width: 200px;
     margin-top: 5px;
+    font-size: 13px;
 }
 
 .alert.alert-danger{

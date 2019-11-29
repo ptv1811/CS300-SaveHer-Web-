@@ -23,7 +23,7 @@ import Logout from '../logout/Logout';
 import SignUp from '../signup/Signup';
 import About from '../../containers/About';
 import Contact from '../../containers/Contact'
-
+import '../../assets/css/NavbarComponent.css';
 
 function NavbarComponent(props){
     const navRef= React.createRef();
