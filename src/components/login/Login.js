@@ -129,7 +129,7 @@ function Login (props){
         <Switch>
           <Route path='/' exact>
             <AuthContext.Consumer>
-              {({currentUser})=>  <Home user={currentUser}/>}
+              {({currentUser})=><Home user={currentUser}/>}
             </AuthContext.Consumer>
           </Route>
         </Switch>
