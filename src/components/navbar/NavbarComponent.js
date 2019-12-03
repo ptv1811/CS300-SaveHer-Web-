@@ -49,11 +49,14 @@ function NavbarComponent(props){
                               if (currentUser!==null){changeCurrentURL(window.location.href.split('/')[3]);}
                                return (<div ref={navRef} id="nav" 
                                         className={classNames("navbar-container", 
-                                                    {'middle-nav':(target==='HOME' && currentUser!==null) || 
-                                                                    ((currentURL==='login'||currentURL==='signup') && (currentUser!==null))})}>
+                                            {
+                                                'middle-nav': (target === 'HOME' && currentUser !== null) || 
+                                                    ((currentURL === 'login' || currentURL === 'signup') && (currentUser !== null)) ||
+                                                ((target==='toggle' && (currentURL === 'login' || currentURL==='signup' || currentURL==='')))
+                                            })}>
                                         <Navbar color="light" light expand="md">
                                             <NavbarBrand href="/">reactstrap</NavbarBrand>
-                                            <NavbarToggler onClick={toggle} />
+                                       <NavbarToggler onClick={(e) => { toggle(); changeTarget('toggle') }} />
                                             <Collapse isOpen={isOpen} navbar>
                                             <Nav className="ml-auto" navbar>
                                                 <NavItem>
