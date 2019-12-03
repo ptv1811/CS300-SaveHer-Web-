@@ -13,8 +13,7 @@
 .input + label{
     position: absolute;
     left: 50%;
-    font-weight: 800;
-    
+    font-weight: 800;   
     top: 50%;
     color: white;
     border: solid 2px black;
@@ -22,4 +21,17 @@
     padding: 10px;
     background: #2098ab;
     cursor: pointer;
+    transform: translateX(-50%);
+}
+.upload-success{
+    position: absolute;
+    top: 300%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.appear{
+    opacity: 1;
+    transition: all 0.4s;
 }

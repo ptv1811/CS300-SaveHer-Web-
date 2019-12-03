@@ -17,7 +17,8 @@ function SignUp(props){
 
   setTimeout(()=>{
     if (errCode!=='') setErrcode('');
-  },3500);
+  }, 3500);
+  
   function submitHandling(event){
     app.auth().createUserWithEmailAndPassword(email,password)
       .then(
