@@ -50,9 +50,11 @@ function NavbarComponent(props){
                                return (<div ref={navRef} id="nav" 
                                         className={classNames("navbar-container", 
                                             {
-                                                'middle-nav': (target === 'HOME' && currentUser !== null) || 
+                                                'middle-nav':
+                                                    (target === 'HOME' ) || 
                                                     ((currentURL === 'login' || currentURL === 'signup') && (currentUser !== null)) ||
-                                                ((target==='toggle' && (currentURL === 'login' || currentURL==='signup' || currentURL==='')))
+                                                    ((target === 'toggle' && (currentURL === 'login' || currentURL === 'signup' || currentURL === ''))) || 
+                                                    (target==='' && currentURL==='')
                                             })}>
                                         <Navbar color="light" light expand="md">
                                             <NavbarBrand href="/">reactstrap</NavbarBrand>
